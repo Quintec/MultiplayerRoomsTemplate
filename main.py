@@ -39,6 +39,7 @@ def join(idd):
         return "Game not found", 404
 
 
+# host clicks start game
 @socketio.on("startGame")
 def start_game(data):
     uid = data["uid"]
@@ -63,6 +64,7 @@ def join_game(data):
     )
 
 
+# generating unique ID for each player
 @socketio.on("getID")
 def get_id():
     chars = string.ascii_letters + string.digits
@@ -73,6 +75,7 @@ def get_id():
     emit("id", name)
 
 
+# player picks username
 @socketio.on("setName")
 def set_name(dat):
     uid = dat["uid"]
@@ -93,6 +96,7 @@ def player_join(data):
             emit("join", rid)
 
 
+# hosting new game
 @socketio.on("getHost")
 def get_host(idd):
     chars = string.ascii_letters + string.digits
