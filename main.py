@@ -44,7 +44,7 @@ def join(idd):
 def start_game(data):
     uid = data["uid"]
     game = data["rid"]
-    if games[game]["speaker"] == uid and len(games[game]["players"]) > 0:
+    if games[game]["host"] == uid and len(games[game]["players"]) > 0:
         emit("gameStart", room=game)
 
 
